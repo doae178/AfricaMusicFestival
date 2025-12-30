@@ -1,0 +1,49 @@
+@if (event) {
+  <div class="event-card">
+
+    <div class="image-wrapper">
+      <img
+        [src]="getImageUrl(event)"
+        alt="Event image"
+        loading="lazy"
+        (error)="onImageError($event)"
+      />
+      <span class="status">{{ event.status }}</span>
+    </div>
+
+    <div class="content">
+      <h3 class="title">{{ event.name }}</h3>
+      <p class="venue">{{ event.venue }}</p>
+
+      <div class="meta">
+        <span>📅 {{ event.eventDate }}</span>
+        <span>💰 {{ event.ticketPrice }} €</span>
+      </div>
+
+      <div class="tickets">
+        🎟 {{ event.availableTickets }}
+      </div>
+
+      <div class="actions">
+        <button class="btn outline" (click)="viewDetails()">
+          Détails
+        </button>
+
+        <button
+          class="btn primary"
+          (click)="openReservationModal()"
+          [disabled]="event.availableTickets === 0">
+          Réserver
+        </button>
+      </div>
+    </div>
+
+  </div>
+}
+
+@if (showModal) {
+  <app-reservation-modal
+    [event]="event"
+    (close)="showModal = false">
+  </app-reservation-modal>
+}

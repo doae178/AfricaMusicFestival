@@ -1,0 +1,45 @@
+@for (e of [event]; track e.id) {
+  <div class="overlay">
+    <div class="modal" (click)="$event.stopPropagation()">
+
+      <div class="modal-header">
+        <h3>Votre réservation</h3>
+        <button class="close" (click)="close.emit()">✕</button>
+      </div>
+
+      <div class="item">
+
+        <div class="details">
+          <h4>{{ e.name }}</h4>
+          <p>{{ e.venue }}</p>
+          <p>{{ e.eventDate }}</p>
+
+          <div class="quantity">
+            <button (click)="quantity = quantity - 1" [disabled]="quantity === 1">−</button>
+            <span>{{ quantity }}</span>
+            <button (click)="quantity = quantity + 1"
+                    [disabled]="quantity >= e.availableTickets">+</button>
+          </div>
+        </div>
+
+        <div class="price">
+          {{ e.ticketPrice * quantity }} €
+        </div>
+      </div>
+
+      <button class="confirm" (click)="confirm()">
+        Confirmer la réservation
+      </button>
+
+      @if (showPayment) {
+        <app-payment-modal
+          [reservationId]="reservationId"
+          [amount]="e.ticketPrice * quantity"
+          (close)="showPayment = false"
+          (success)="onPaymentSuccess()">
+        </app-payment-modal>
+      }
+
+    </div>
+  </div>
+}

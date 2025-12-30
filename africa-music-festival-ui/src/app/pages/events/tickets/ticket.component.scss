@@ -1,0 +1,98 @@
+/* ===== TICKET ===== */
+.ticket {
+  margin-top: 18px;
+  padding: 22px;
+  border: 2px dashed #ff6a88;
+  border-radius: 16px;
+  background: #fffafc;
+  width: 100%;
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 15px;
+}
+
+/* ===== TITRE ===== */
+.ticket h2 {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+}
+
+/* ===== LIGNES ===== */
+.ticket p {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-weight: 500;
+}
+
+.ticket strong {
+  color: #444;
+}
+
+/* ===== SÉPARATEUR ===== */
+.ticket hr {
+  margin: 14px 0;
+  border: none;
+  border-top: 1px dashed #ff6a88;
+}
+
+/* ===== CODE TICKET ===== */
+.ticket p:last-of-type {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px dashed #ff6a88;
+  font-weight: 700;
+  color: #ff6a88;
+  justify-content: center;
+}
+
+/* ===== ACTIONS ===== */
+.actions {
+  margin-top: 22px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ===== BOUTON IMPRIMER ===== */
+.actions button {
+  padding: 12px 22px;
+  border-radius: 16px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #ff6a88, #ff9a44);
+  color: white;
+  box-shadow: 0 6px 18px rgba(255, 106, 136, 0.35);
+  transition: all 0.2s ease;
+}
+
+.actions button:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #ff5075, #ff8a1f);
+}
+
+/* ===== ICÔNE ===== */
+.actions button span {
+  font-size: 16px;
+}
+
+/* ===== IMPRESSION ===== */
+@media print {
+  .actions {
+    display: none;
+  }
+
+  .ticket {
+    border: none;
+    box-shadow: none;
+    width: 100%;
+  }
+}

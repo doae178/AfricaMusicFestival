@@ -1,0 +1,26 @@
+<div class="auth-container">
+  <h2>🔐 Connexion</h2>
+
+  <!-- Utilisez *ngFor au lieu de @for -->
+  <div *ngFor="let field of fields; trackBy: trackByFn">
+    <input
+      [type]="field.type"
+      [placeholder]="field.placeholder"
+      [(ngModel)]="form[field.key]"
+      name="{{ field.key }}"
+    required
+    />
+  </div>
+
+  <!-- Utilisez *ngIf au lieu de @if -->
+  <p *ngIf="error" class="error">{{ error }}</p>
+
+  <button (click)="login()" [disabled]="loading">
+    {{ loading ? 'Connexion...' : 'Se connecter' }}
+  </button>
+
+  <p class="switch">
+    Pas de compte ?
+    <a routerLink="/register">Créer un compte</a>
+  </p>
+</div>

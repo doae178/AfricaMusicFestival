@@ -1,0 +1,30 @@
+<h2 class="title">🎶 Événements disponibles</h2>
+
+<!-- FILTRES -->
+<div class="filters">
+  <button (click)="setFilter('week')"  [class.active]="filter === 'week'">
+    Cette semaine
+  </button>
+  <button (click)="setFilter('month')" [class.active]="filter === 'month'">
+    Ce mois
+  </button>
+  <button (click)="setFilter('all')"   [class.active]="filter === 'all'">
+    Tous
+  </button>
+</div>
+
+@if (loading) {
+  <p>Chargement des événements...</p>
+}
+
+@if (!loading && filteredEvents.length === 0) {
+  <p>Aucun événement trouvé.</p>
+}
+
+@if (!loading && filteredEvents.length > 0) {
+  <div class="grid">
+    @for (event of filteredEvents; track event.id) {
+      <app-event-card [event]="event"></app-event-card>
+    }
+  </div>
+}

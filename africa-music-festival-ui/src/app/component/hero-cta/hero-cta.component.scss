@@ -1,0 +1,22 @@
+.hero {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #1b0035, #090014);
+  text-align: center;
+}
+
+.cta {
+  background: linear-gradient(135deg, #ff9800, #ff5722);
+  border: none;
+  padding: 18px 45px;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 30px rgba(255, 152, 0, 0.6);
+  transition: all 0.3s;
+}
+
+.cta:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 45px rgba(255, 87, 34, 0.9);
+}

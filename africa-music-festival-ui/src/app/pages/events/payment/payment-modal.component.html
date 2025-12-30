@@ -1,0 +1,64 @@
+<div class="overlay" (click)="closeModal()">
+  <div class="modal" (click)="$event.stopPropagation()">
+
+    <!-- ===== FORMULAIRE ===== -->
+    @if (!paid) {
+      <h2>Paiement</h2>
+
+      <input [(ngModel)]="cardNumber" placeholder="4242 4242 4242 4242">
+      <input [(ngModel)]="expiry" placeholder="MM/YY">
+      <input [(ngModel)]="cvc" placeholder="CVC">
+
+      @if (error) {
+        <p class="error">{{ error }}</p>
+      }
+
+      <button
+        class="pay-btn"
+        (click)="pay()"
+        [disabled]="loading"
+      >
+        {{ loading ? 'Traitement...' : 'Payer ' + amount + ' €' }}
+      </button>
+    }
+
+    <!-- ===== TICKET ===== -->
+    @if (paid && showTicket && paymentResult) {
+      <div class="success">
+
+        <h2>🎟️ Ticket de paiement</h2>
+
+        <div class="ticket">
+          @for (field of ticketFields; track field.key) {
+
+            @if (field.key === 'paymentDate') {
+              <p>
+                <strong>{{ field.label }} :</strong>
+                {{ paymentResult.paymentDate | date:'dd/MM/yyyy HH:mm' }}
+              </p>
+            }
+            @else {
+              <p>
+                <strong>{{ field.label }} :</strong>
+                {{ paymentResult[field.key] }}{{ field.suffix }}
+              </p>
+            }
+
+          }
+
+          <p>
+            <strong>Code Ticket :</strong>
+            TCK-{{ paymentResult.id }}
+          </p>
+        </div>
+
+        <div class="actions">
+          <button (click)="print()">🖨️ Imprimer</button>
+          <button (click)="closeModal()">Fermer</button>
+        </div>
+
+      </div>
+    }
+
+  </div>
+</div>

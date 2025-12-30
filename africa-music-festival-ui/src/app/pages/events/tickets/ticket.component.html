@@ -1,0 +1,28 @@
+<div class="ticket">
+  <h2>🎟️ Ticket de réservation</h2>
+
+  <p><strong>Client :</strong> {{ reservation.customerName }}</p>
+  <p><strong>Événement :</strong> {{ reservation.eventId }}</p>
+  <p><strong>Nombre de tickets :</strong> {{ reservation.numberOfTickets }}</p>
+
+  <hr>
+
+  <p><strong>Montant payé :</strong> {{ payment.amount }} €</p>
+  <p><strong>Status :</strong> {{ payment.status }}</p>
+
+  <p>
+    <strong>Date :</strong>
+    {{ payment.paymentDate | date:'dd/MM/yyyy HH:mm' }}
+  </p>
+
+  <p><strong>Code ticket :</strong> TCK-{{ payment.id }}</p>
+
+  <div class="actions">
+    <button (click)="print()">
+      <span>🖨️</span> Imprimer
+    </button>
+
+
+  </div>
+
+</div>

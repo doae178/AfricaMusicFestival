@@ -1,0 +1,34 @@
+<nav class="navbar">
+  <div class="logo" (click)="scrollToSection('home')">
+    AfricaMusic
+  </div>
+
+  <ul class="nav-links">
+    <li (click)="scrollToSection('home')">Home</li>
+    <li (click)="scrollToSection('events')">Events</li>
+    <li (click)="scrollToSection('CONTACT')">Contact</li>
+  </ul>
+
+  <button class="nav-btn" (click)="scrollToSection('events')">
+    🎟 Tickets
+  </button>
+  <div class="auth-actions">
+
+    @if (!isLoggedIn) {
+      <button class="nav-btn outline" routerLink="/login">
+        Login
+      </button>
+
+      <button class="nav-btn" routerLink="/register">
+        Register
+      </button>
+    }
+
+    @if (isLoggedIn) {
+      <button class="nav-btn danger" (click)="logout()">
+        Logout
+      </button>
+    }
+
+  </div>
+</nav>
